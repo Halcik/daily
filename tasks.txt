@@ -1,0 +1,6 @@
+date  name  category  duration status
+15 03 2024  nauka  studia  całą wieczność  NO
+16 04 2024  czytanie  xd  30  NO
+5 07 2024  wakacje  wolne  cały dzień  NO
+23 03 2024  wejściówka u Hładka  studia  nie da się  NO
+4  jakaśśśśś  coś  20  NO
