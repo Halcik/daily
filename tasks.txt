@@ -3,4 +3,4 @@ date  id  name  category  duration status
 27 04 2024  2  nauka  studia  60  NO
 24 04 2024  3  projekt na c--  studia  60  NO
 28 04 2024  4  nauka  studia  60  NO
-15 04 2024  5  scrum  nauka  30  NO
+15 04 2024  5  scrum  nauka  30  YES
