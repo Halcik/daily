@@ -40,7 +40,7 @@ def read_tasks(date_now):
                 status = "☐"
             else:
                 status = "☑"
-            print(f"{i}.{status} [id {task[1]}] {task[2]} - {task[4]} min.")
+            print(f"{i}.{status} [id {task[1]}] {task[2]} ({task[3]}) - {task[4]} min.")
             i += 1
     print("\nZaległe:")
     for task in tasks_tab:
@@ -83,5 +83,5 @@ if __name__ == '__main__':
     # task = new_task()
     date_now = datetime.now()
     date_now = datetime(day=date_now.day, month=date_now.month, year=date_now.year)
-    #read_tasks(date_now)
-    update_status(date_now)
+    read_tasks(date_now)
+    #update_status(date_now)
