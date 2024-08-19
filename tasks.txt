@@ -1,7 +1,7 @@
 date  id  name  category  duration  status  end_date
-28 04 2024  1  zakupy  jedzenie  30  NO  0 0 0
-27 04 2024  2  nauka  studia  60  NO  0 0 0
-24 04 2024  3  projekt na c--  studia  60  YES  4 8 2024
-28 04 2024  4  nauka  studia  60  NO  0 0 0
-15 04 2024  5  scrum  nauka  30  NO  0 0 0
-4 8 2024  6  kolejna losowa wiadomosc  test  15  NO  0 0 0
+28 04 2024  1  zakupy  jedzenie  30  YES  19 8 2024
+27 04 2024  2  nauka  studia  60  YES  19 8 2024
+28 04 2024  4  nauka  studia  60  YES  19 8 2024
+15 04 2024  5  scrum  nauka  30  NO  1 1 2000
+4 8 2024  6  kolejna losowa wiadomosc  test  15  NO  1 1 2000
+19 8 2024  7  nauka  nauka  60  NO  1 1 2000

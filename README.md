@@ -11,4 +11,6 @@ Jest to kolejna aplikacja służąca do planowania. Łączy ze sobą elementy ka
 
  - **read_tasks** - odczytuje zadania i segreguje je według daty - zadania z aktualną datą są w zadaniach na dany dzień, natomiast te, których data minęła a nie zostały wykonane, znajdują się w zaległych. Przyszłe zadania nie są wyświetlane.
 
- - **update_status** - pozwala na zaktualizowanie statusu zadania po jego id (uzyskiwane przy odczycie zadań przez **read_tasks**)
+ - **update_status** - pozwala na zaktualizowanie statusu zadania po jego id (uzyskiwane przy odczycie zadań przez **read_tasks**) oraz dodatkowo zlicza zadania zrobione danego dnia.
+
+ - **delete_tasks** - usuwa wykonane zadania z poprzednich dni z pliku **tasks**

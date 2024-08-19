@@ -15,7 +15,7 @@ def new_task():
     category = input("Podaj nazwę kategorii:\n")
     duration = input("Podaj, ile czasu trwa wykonanie zadania w min:\n")
     status = "NO"
-    end_date = "0 0 0"
+    end_date = "1 1 2000"
     id_file = open("id.txt", "r", encoding='utf-8')
     id = str(int(id_file.readline())+1)
     id_file.close()
@@ -62,6 +62,12 @@ def update_status(date_now):
     counter_file = open("counter.txt", "r", encoding='utf-8')
     counter = counter_file.readline().split("  ")
     print(counter)
+    date = counter[1].split()
+    date = datetime(day=int(date[0]), month=int(
+            date[1]), year=int(date[2]))
+    if date != date_now:
+        counter[0] = "0"
+        counter[1] = f"{date_now.day} {date_now.month} {date_now.year}\n"
     id = input('Podaj id zadania: ')
     tasks = open("tasks.txt", "r", encoding='utf-8')
     tasks_tab = tasks.readlines()
@@ -77,11 +83,35 @@ def update_status(date_now):
             tasks = open("tasks.txt", "w", encoding='utf-8')
             tasks.writelines(tasks_tab)
             tasks.close()
+            counter[0] = str(int(counter[0]) + 1)
+    counter_file = open("counter.txt", "w", encoding='utf-8')
+    counter = "  ".join(counter)
+    counter_file.write(counter)
+    counter_file.close()
+
+def delete_tasks(date_now):
+    tasks = open("tasks.txt", "r", encoding='utf-8')
+    tasks_tab = tasks.readlines()
+    tasks.close()
+    for i, task in enumerate(tasks_tab[1:]):
+        task = task.split("  ")
+        date = task[-1].split()
+        date = datetime(day=int(date[0]), month=int(
+            date[1]), year=int(date[2]))
+        if task[-2] == "YES" and date != date_now:
+            tasks_tab[i+1] = ""
+    print(tasks_tab)
+    tasks = open("tasks.txt", "w", encoding='utf-8')
+    tasks.writelines(tasks_tab)
+    tasks.close()    
+
+
 
 
 if __name__ == '__main__':
-    # task = new_task()
     date_now = datetime.now()
     date_now = datetime(day=date_now.day, month=date_now.month, year=date_now.year)
-    read_tasks(date_now)
+    delete_tasks(date_now)
+    #task = new_task()
+    #read_tasks(date_now)
     #update_status(date_now)
