@@ -61,25 +61,18 @@ def read_tasks(date_now):
 def update_status(date_now):
     counter_file = open("counter.txt", "r", encoding='utf-8')
     counter = counter_file.readline().split("  ")
-    print(counter)
-    date = counter[1].split()
-    date = datetime(day=int(date[0]), month=int(
-            date[1]), year=int(date[2]))
-    if date != date_now:
-        counter[0] = "0"
-        counter[1] = f"{date_now.day} {date_now.month} {date_now.year}\n"
-    id = input('Podaj id zadania: ')
+    id = input('Podaj id zadania do zaktualizowania: ')
     tasks = open("tasks.txt", "r", encoding='utf-8')
     tasks_tab = tasks.readlines()
     tasks.close()
     counter_file.close()
-    for task in tasks_tab:
+    for i, task in enumerate(tasks_tab):
         task = task.split("  ")
         if task[1] == id:
             task[-2] = "YES"
             task[-1] = f"{date_now.day} {date_now.month} {date_now.year}\n"
             task = '  '.join(task)
-            tasks_tab[int(id)] = task
+            tasks_tab[i] = task
             tasks = open("tasks.txt", "w", encoding='utf-8')
             tasks.writelines(tasks_tab)
             tasks.close()
@@ -88,6 +81,7 @@ def update_status(date_now):
     counter = "  ".join(counter)
     counter_file.write(counter)
     counter_file.close()
+
 
 def delete_tasks(date_now):
     tasks = open("tasks.txt", "r", encoding='utf-8')
@@ -100,18 +94,34 @@ def delete_tasks(date_now):
             date[1]), year=int(date[2]))
         if task[-2] == "YES" and date != date_now:
             tasks_tab[i+1] = ""
-    print(tasks_tab)
     tasks = open("tasks.txt", "w", encoding='utf-8')
     tasks.writelines(tasks_tab)
-    tasks.close()    
+    tasks.close()
+    counter_file = open("counter.txt", "r", encoding='utf-8')
+    counter = counter_file.readline().split("  ")
+    counter_file.close()
+    date = counter[1].split()
+    date = datetime(day=int(date[0]), month=int(date[1]), year=int(date[2]))
+    if date != date_now:
+        counter[0] = "0"
+        counter[1] = f"{date_now.day} {date_now.month} {date_now.year}\n"
+    counter_file = open("counter.txt", "w", encoding='utf-8')
+    counter = "  ".join(counter)
+    counter_file.write(counter)
+    counter_file.close()
 
 
+def display_n_done():
+    counter_file = open("counter.txt", "r", encoding='utf-8')
+    counter = counter_file.readline().split("  ")[0]
+    print(f"\n~ Liczba wykonanych dzisiaj zadań: {counter} ~\n")
 
 
 if __name__ == '__main__':
     date_now = datetime.now()
     date_now = datetime(day=date_now.day, month=date_now.month, year=date_now.year)
     delete_tasks(date_now)
+    display_n_done()
     #task = new_task()
-    #read_tasks(date_now)
+    read_tasks(date_now)
     #update_status(date_now)
