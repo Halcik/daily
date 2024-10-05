@@ -16,3 +16,5 @@ Jest to kolejna aplikacja służąca do planowania. Łączy ze sobą elementy ka
  - **delete_tasks** - usuwa wykonane zadania z poprzednich dni z pliku **tasks** oraz zeruje liczbę zrobionych zadań kolejnego dnia.
 
  - **display_n_done** - wyświetla liczbę zrobionych danego dnia tasków
+
+ - **check_files** - sprawdza, czy niezbędne pliki istnieją, jeśli nie, to je tworzy

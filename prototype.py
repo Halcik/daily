@@ -119,6 +119,7 @@ def display_n_done():
     counter = counter_file.readline().split("  ")[0]
     print(f"\n~ Liczba wykonanych dzisiaj zadań: {counter} ~")
 
+
 def check_files():
     path = sys.argv[0][:-12]
     files = ('counter.txt', 'id.txt', 'tasks.txt')
