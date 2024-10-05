@@ -1,4 +1,0 @@
-date  id  name  category  duration  status  end_date
-15 04 2024  5  scrum  nauka  30  YES  8 9 2024
-4 8 2024  6  kolejna losowa wiadomosc  test  15  YES  8 9 2024
-19 8 2024  7  nauka  nauka  60  NO  1 1 2000

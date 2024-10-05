@@ -1,5 +1,7 @@
 # date  name  category  duration
 from datetime import datetime
+from pathlib import Path
+import sys
 
 
 def add_task_to_file(task):
@@ -29,7 +31,7 @@ def read_tasks(date_now):
     tasks = open("tasks.txt", "r", encoding='utf-8')
     tasks_tab = tasks.readlines()[1:]
     i = 1
-    print("Zadania na dziś:")
+    print("\nZadania na dziś:")
     for task in tasks_tab:
         task = task.split("  ")
         date = task[0].split()
@@ -81,6 +83,7 @@ def update_status(date_now):
     counter = "  ".join(counter)
     counter_file.write(counter)
     counter_file.close()
+    display_n_done()
 
 
 def delete_tasks(date_now):
@@ -114,14 +117,41 @@ def delete_tasks(date_now):
 def display_n_done():
     counter_file = open("counter.txt", "r", encoding='utf-8')
     counter = counter_file.readline().split("  ")[0]
-    print(f"\n~ Liczba wykonanych dzisiaj zadań: {counter} ~\n")
+    print(f"\n~ Liczba wykonanych dzisiaj zadań: {counter} ~")
+
+
+def check_files():
+    path = sys.argv[0][:-12]
+    files = ('counter.txt', 'id.txt', 'tasks.txt')
+    contents = ('0  1 1 2000', '0', 'date  id  name  category  duration  status  end_date\n')
+    for i, file in enumerate(files):
+        file = Path(path, file)
+        if file.exists():
+            continue
+        create = open(file.name, "w")
+        create.write(contents[i])
+        create.close()
 
 
 if __name__ == '__main__':
+    check_files()
     date_now = datetime.now()
     date_now = datetime(day=date_now.day, month=date_now.month, year=date_now.year)
     delete_tasks(date_now)
-    display_n_done()
-    #task = new_task()
+    print("Cześć!")
     read_tasks(date_now)
-    #update_status(date_now)
+    while True:
+        print("\nWybierz opcję:\n[1] Dodaj zadanie\n[2] Ukończ zadanie\n[3] Pokaż zadania\n[4] Pokaż liczbę zrobionych zadań\n[5] Wyłącz program")
+        option = int(input())
+        match option:
+            case 1:
+                new_task()
+            case 2:
+                update_status(date_now)
+            case 3:
+                read_tasks(date_now)
+            case 4:
+                display_n_done()
+            case 5:
+                break
+        
