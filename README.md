@@ -18,3 +18,7 @@ Jest to kolejna aplikacja służąca do planowania. Łączy ze sobą elementy ka
  - **display_n_done** - wyświetla liczbę zrobionych danego dnia tasków
 
  - **check_files** - sprawdza, czy niezbędne pliki istnieją, jeśli nie, to je tworzy
+
+## Funkcje występujące w programie **main.py**
+
+- **read_tasks** - odczytuje zadania
